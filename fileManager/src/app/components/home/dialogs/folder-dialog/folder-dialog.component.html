@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <span>{{dialogHeader}}</span>
+</mat-toolbar>
+
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <mat-label>Klasör ismi</mat-label>
+      <input matInput placeholder="Klasör ismi" formControlName="folderName" name="folderName" required >
+    </mat-form-field>
+
+     <mat-select placeholder="Klasöre kimlerin erişebileceğini seç" formControlName="folderGroupLevel" name="folderGroupLevel" required type="select">
+      <mat-option [value]="'owner'">Yönetici</mat-option>
+      <mat-option [value]="'admin'">Admin</mat-option>
+      <mat-option [value]="'user'">Tüm kullanıcılar</mat-option>
+      <mat-option [value]="'secret'">gizli</mat-option>
+    </mat-select> 
+  </form>
+    <p>&nbsp;</p>
+  <button mat-raised-button color="primary" (click)="dialogRef.close(frm.value)" [disabled]="frm.invalid">Kaydet</button>&nbsp;
+  <button mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button>
+</div>

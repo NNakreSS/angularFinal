@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <span>Dosya ekle</span>
+</mat-toolbar>
+
+<div class="container">
+  <input type="file" hidden="true" (change)="sFile($event)" #foto>
+  <button mat-raised-button color="primary" (click)="foto.click()">Dosya seç</button>
+  &nbsp;
+    <mat-form-field appearance="outline">
+      <mat-label>Dosya ismi</mat-label>
+      <input matInput placeholder="Klasör ismi" (keyup)="fileName($event)" formControlName="folderName" name="folderName" required >
+    </mat-form-field>
+  <button mat-raised-button color="primary" (click)="dialogRef.close(newFile)" [disabled]="!selectFile">Kaydet</button>&nbsp;
+  <button mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button>
+</div>

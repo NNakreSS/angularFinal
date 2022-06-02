@@ -1,0 +1,63 @@
+<div class="container">
+  <h1>
+    Dosyalar
+  </h1>
+  <h3>
+    <b>Klasör ismi : </b> {{selectFolder?.folderName}}
+  </h3>
+
+  
+   <mat-form-field appearance="legacy">
+    <input matInput placeholder="Aranacak değer" (keyup)="filter($event)">
+  </mat-form-field> 
+    <!-- <button mat-fab matTooltip="Geri git" [routerLink]="['']">
+      <mat-icon aria-label="label" color="primary">arrow_back</mat-icon>
+    </button>  -->
+    <button mat-fab matTooltip="Dosya ekle" (click)="addFile()">
+      <mat-icon aria-label="label" color="primary">add</mat-icon>
+    </button> <p>&nbsp;</p>
+
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="fileName">
+      <mat-header-cell *matHeaderCellDef > Dosya ismi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.fileName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="fileUpploadTime">
+      <mat-header-cell *matHeaderCellDef > Yüklenme tarihi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.fileUpploadTime}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="fileType">
+      <mat-header-cell *matHeaderCellDef > Dosya tipi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.fileType}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef> İşlemler
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button matTooltip="Dosyayı düzenle">
+          <mat-icon aria-label="label" color="accent">edit</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Dosyayı sil" >
+          <mat-icon aria-label="label" color="warn">delete</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Dosyayı indir" >
+          <mat-icon aria-label="label" color="primary">download</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  
+  <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+  </mat-paginator>
+</div>

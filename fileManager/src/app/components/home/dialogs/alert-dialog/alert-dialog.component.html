@@ -1,0 +1,7 @@
+<mat-toolbar [color]="dialogProccess ? 'primary' : 'warn'" class="mat-elevation-z6">
+  <span>{{dialogHeader}}</span>
+</mat-toolbar>
+<div class="container">
+  {{dialogMessage}}
+</div>
+<button mat-raised-button (click)="dialogRef.close()" class="btn btn-primary">Kapat</button>
